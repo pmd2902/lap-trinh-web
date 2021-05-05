@@ -1,0 +1,117 @@
+﻿@model ShopGiay.Models.User
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("DangKy","NguoiDung", FormMethod.Post)) 
+{
+    @Html.AntiForgeryToken()
+    <style>
+        .form-group #MatKhau{
+           width: 100%;
+        }
+        .signup-image{
+            width: 130%;
+            object-fit: cover;
+            height: 100%
+        }
+    </style>
+    <div class="slider-area ">
+        <div class="single-slider slider-height2 d-flex align-items-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap text-center">
+                            <h2>ĐĂNG KÝ THÀNH VIÊN</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-horizontal">
+        <br />
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Nhập thông tin</h4>
+                    <hr />
+                    @Html.ValidationSummary(false, "", "error")
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        <label>Tài Khoản</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TaiKhoan, new { htmlAttributes = new { @class = "form-control", } })
+                            @Html.ValidationMessageFor(model => model.TaiKhoan, "", new { @class = "text-danger" })
+                            @ViewData["Loi1"]
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Mật Khẩu</label>
+                        <div class="col-md-10">
+                            @Html.PasswordFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                            @ViewData["Loi2"]
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Họ Tên</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                            @ViewData["Loi3"]
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Địa Chỉ</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                            @ViewData["Loi4"]
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Số Điện Thoại</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.SoDienThoai, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.SoDienThoai, "", new { @class = "text-danger" })
+                            @ViewData["Loi5"]
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            @ViewData["Loi6"]
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Đăng ký" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img class="signup-image" src="~/Assets/img/signup-image.jpg" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
